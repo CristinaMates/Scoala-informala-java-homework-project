@@ -7,8 +7,9 @@ public class ElectricVehicle {
     private String manufacturer;
     private String model;
     private int productionYear;
+    private boolean stock;
     private boolean fastCharging;
-    private String rangerPerCharge;
+    private String rangePerCharge;
     private String horsePower;
 
     /**
@@ -16,13 +17,28 @@ public class ElectricVehicle {
      *
      * @param manufacturer
      * @param model
+     * @param fastCharging
+     * @param stock
+     * @param electricMotor
+     * @param electricBattery
+     * @param energyConsumption
+     * @param productionYear
+     * @param rangePerCharge
+     * @param horsePower
      */
 
-    public ElectricVehicle(String manufacturer, String model) {
+    public ElectricVehicle(String manufacturer, String model, boolean fastCharging, String electricMotor, String electricBattery, String energyConsumption, int productionYear, String rangePerCharge, String horsePower, boolean stock) {
         this.manufacturer = manufacturer;
         this.model = model;
+        this.fastCharging = fastCharging;
+        this.electricMotor = electricMotor;
+        this.electricBattery = electricBattery;
+        this.energyConsumption = energyConsumption;
+        this.productionYear = productionYear;
+        this.rangePerCharge = rangePerCharge;
+        this.horsePower = horsePower;
+        this.stock = stock;
     }
-
 
     public String getElectricMotor() {
         return electricMotor;
@@ -80,12 +96,12 @@ public class ElectricVehicle {
         this.fastCharging = fastCharging;
     }
 
-    public String getRangerPerCharge() {
-        return rangerPerCharge;
+    public String getRangePerCharge() {
+        return rangePerCharge;
     }
 
-    public void setRangerPerCharge(String rangerPerCharge) {
-        this.rangerPerCharge = rangerPerCharge;
+    public void setRangePerCharge(String rangerPerCharge) {
+        this.rangePerCharge = rangerPerCharge;
     }
 
     public String getHorsePower() {
@@ -96,4 +112,11 @@ public class ElectricVehicle {
         this.horsePower = horsePower;
     }
 
+    public boolean isStock() {
+        return stock;
+    }
+
+    public void setStock(boolean stock) {
+        this.stock = stock;
+    }
 }
