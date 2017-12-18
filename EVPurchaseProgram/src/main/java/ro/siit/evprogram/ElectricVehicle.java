@@ -9,8 +9,9 @@ public class ElectricVehicle {
     private int productionYear;
     private boolean stock;
     private boolean fastCharging;
-    private String rangePerCharge;
-    private String horsePower;
+    private int rangePerCharge;
+    private int horsePower;
+    private int price;
 
     /**
      * Constructor for initializing ElectricVehicle object
@@ -25,9 +26,10 @@ public class ElectricVehicle {
      * @param productionYear
      * @param rangePerCharge
      * @param horsePower
+     * @param price
      */
 
-    public ElectricVehicle(String manufacturer, String model, boolean fastCharging, String electricMotor, String electricBattery, String energyConsumption, int productionYear, String rangePerCharge, String horsePower, boolean stock) {
+    public ElectricVehicle(String manufacturer, String model, boolean fastCharging, String electricMotor, String electricBattery, String energyConsumption, int productionYear, int rangePerCharge, int horsePower, boolean stock, int price) {
         this.manufacturer = manufacturer;
         this.model = model;
         this.fastCharging = fastCharging;
@@ -38,6 +40,7 @@ public class ElectricVehicle {
         this.rangePerCharge = rangePerCharge;
         this.horsePower = horsePower;
         this.stock = stock;
+        this.price = price;
     }
 
     public String getElectricMotor() {
@@ -96,19 +99,19 @@ public class ElectricVehicle {
         this.fastCharging = fastCharging;
     }
 
-    public String getRangePerCharge() {
+    public int getRangePerCharge() {
         return rangePerCharge;
     }
 
-    public void setRangePerCharge(String rangerPerCharge) {
+    public void setRangePerCharge(int rangerPerCharge) {
         this.rangePerCharge = rangerPerCharge;
     }
 
-    public String getHorsePower() {
+    public int getHorsePower() {
         return horsePower;
     }
 
-    public void setHorsePower(String horsePower) {
+    public void setHorsePower(int horsePower) {
         this.horsePower = horsePower;
     }
 
@@ -118,5 +121,30 @@ public class ElectricVehicle {
 
     public void setStock(boolean stock) {
         this.stock = stock;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "ElectricVehicle{" +
+                "manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", productionYear=" + productionYear +
+                ", price=" + price +
+                ", rangePerCharge='" + rangePerCharge + '\'' +
+                ", horsePower='" + horsePower + '\'' +
+                ", electricMotor='" + electricMotor + '\'' +
+                ", electricBattery='" + electricBattery + '\'' +
+                ", energyConsumption='" + energyConsumption + '\'' +
+                ", stock=" + stock +
+                ", fastCharging=" + fastCharging +
+                '}';
     }
 }
