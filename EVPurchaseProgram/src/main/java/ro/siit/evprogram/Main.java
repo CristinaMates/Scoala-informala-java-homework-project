@@ -6,6 +6,7 @@ import java.util.Collections;
 public class Main {
     public static void main(String[] args) {
 
+
         /**
          * Created an object ElectricVehicle array
          */
@@ -60,5 +61,24 @@ public class Main {
             System.out.println(evl);
         }
 
+
+        ArrayList<CarDealership> cd = new ArrayList<CarDealership>();
+        cd.add(new CarDealership("new", true, 25000));
+        cd.add(new CarDealership("used", false, 22700));
+        cd.add(new CarDealership("new", true, 33000));
+        cd.add(new CarDealership("new", true, 38000));
+        cd.add(new CarDealership("new", true, 40000));
+        cd.add(new CarDealership("new", false, 22700));
+        cd.add(new CarDealership("used", true, 22000));
+        cd.add(new CarDealership("new", true, 23000));
+
+
+        CarsFullPrice cfp = new CarsFullPrice();
+        System.out.println("\n");
+        System.out.println("Cutomer purchase car at full price ");
+        for (CarDealership cars : cd) {
+            cfp.getPrice(cd);
+            System.out.println(cars);
+        }
     }
 }

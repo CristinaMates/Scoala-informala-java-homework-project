@@ -3,7 +3,7 @@ package ro.siit.evprogram;
 import java.util.Comparator;
 
 /**
- * Comparator for comparing two cars by their horse power
+ * Comparator for comparing two cars by their horsepower
  */
 
 public class HorsePowerComparator implements Comparator<ElectricVehicle> {
