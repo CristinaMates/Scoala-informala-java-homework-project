@@ -1,6 +1,7 @@
 package ro.siit.evprogram;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
@@ -45,6 +46,19 @@ public class Main {
         evList.add(new ElectricVehicle("Smart", "FourTwo Cabrio", false, "bldc", "li-ion", "42 KWh", 2016, 180, 120, true, 23000));
         evList.add(new ElectricVehicle("Kia", "Soul", true, "dc", "NiCd", "40 KWh", 2015, 125, 90, false, 34000));
         evList.add(new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, true, 27000));
+
+        /**
+         * Sorting an ArrayList collection by multiple attributes
+         */
+
+        Collections.sort(evList, new ElectricVehicleComparator(
+                new PriceComparator(),
+                new RangePerChargeComparator(),
+                new HorsePowerComparator())
+        );
+        for (ElectricVehicle evl : evList) {
+            System.out.println(evl);
+        }
 
     }
 }
