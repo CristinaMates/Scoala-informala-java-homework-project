@@ -85,6 +85,26 @@ public class Main {
         System.out.println("\n");
         System.out.println(bc.bonusController());
 
+        /**
+         * ArrayList that contains the full prices
+         */
+
+        ArrayList<PriceList> prices = new ArrayList<PriceList>();
+        prices.add(new PriceList(25000));
+        prices.add(new PriceList(38000));
+        prices.add(new PriceList(33000));
+        prices.add(new PriceList(40000));
+        prices.add(new PriceList(22000));
+        prices.add(new PriceList(227000));
+        prices.add(new PriceList(23000));
+        prices.add(new PriceList(34000));
+        prices.add(new PriceList(27000));
+
+
+        DiscountedPrice dp = new DiscountedPrice();
+        System.out.println("\n");
+        System.out.println("Customer purchases car with discounted price");
+        System.out.println(dp.getDiscountedPrice(prices));
 
     }
 }
