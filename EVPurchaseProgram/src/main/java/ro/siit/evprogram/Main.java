@@ -80,5 +80,11 @@ public class Main {
             cfp.getPrice(cd);
             System.out.println(cars);
         }
+
+        BonusController bc = new BonusController();
+        System.out.println("\n");
+        System.out.println(bc.bonusController());
+
+
     }
 }

@@ -15,7 +15,6 @@ public class CarDealership {
         this.type = type;
         this.stock = stock;
         this.price = price;
-
     }
 
     public String getType() {
@@ -42,7 +41,6 @@ public class CarDealership {
         this.price = price;
     }
 
-
     @Override
     public String toString() {
         return "CarDealership{" +
@@ -51,4 +49,10 @@ public class CarDealership {
                 ", price=" + price +
                 '}';
     }
+
+    public void requestBonus(int price){
+
+        this.price = price;
+    }
+
 }
