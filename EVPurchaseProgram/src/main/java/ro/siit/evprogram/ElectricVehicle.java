@@ -132,6 +132,45 @@ public class ElectricVehicle {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ElectricVehicle that = (ElectricVehicle) o;
+
+        if (productionYear != that.productionYear) return false;
+        if (stock != that.stock) return false;
+        if (fastCharging != that.fastCharging) return false;
+        if (rangePerCharge != that.rangePerCharge) return false;
+        if (horsePower != that.horsePower) return false;
+        if (price != that.price) return false;
+        if (electricMotor != null ? !electricMotor.equals(that.electricMotor) : that.electricMotor != null)
+            return false;
+        if (electricBattery != null ? !electricBattery.equals(that.electricBattery) : that.electricBattery != null)
+            return false;
+        if (energyConsumption != null ? !energyConsumption.equals(that.energyConsumption) : that.energyConsumption != null)
+            return false;
+        if (manufacturer != null ? !manufacturer.equals(that.manufacturer) : that.manufacturer != null) return false;
+        return model != null ? model.equals(that.model) : that.model == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = electricMotor != null ? electricMotor.hashCode() : 0;
+        result = 31 * result + (electricBattery != null ? electricBattery.hashCode() : 0);
+        result = 31 * result + (energyConsumption != null ? energyConsumption.hashCode() : 0);
+        result = 31 * result + (manufacturer != null ? manufacturer.hashCode() : 0);
+        result = 31 * result + (model != null ? model.hashCode() : 0);
+        result = 31 * result + productionYear;
+        result = 31 * result + (stock ? 1 : 0);
+        result = 31 * result + (fastCharging ? 1 : 0);
+        result = 31 * result + rangePerCharge;
+        result = 31 * result + horsePower;
+        result = 31 * result + price;
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "ElectricVehicle{" +
                 "manufacturer='" + manufacturer + '\'' +
@@ -146,5 +185,7 @@ public class ElectricVehicle {
                 ", stock=" + stock +
                 ", fastCharging=" + fastCharging +
                 '}';
+
+
     }
 }

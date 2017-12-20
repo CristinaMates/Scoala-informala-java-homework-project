@@ -1,7 +1,9 @@
 import org.junit.Assert;
 import org.junit.Test;
-import ro.siit.evprogram.ElectricVehicle;
-import ro.siit.evprogram.FilterCars;
+import ro.siit.evprogram.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class FilteredListTest {
@@ -9,7 +11,7 @@ public class FilteredListTest {
     public void filterListTest() {
         ElectricVehicle[] ev = new ElectricVehicle[9];
         ev[0] = new ElectricVehicle("Volkswagen", "e-UP", true, "bldc", "Nicd", "30 KWh", 2012, 100, 140, true, 25000);
-        ev[1] = new ElectricVehicle("Volkswagen", "e-Golf", false, "dc", "vrla", "32 KWh", 2014, 150,110, true, 38000);
+        ev[1] = new ElectricVehicle("Volkswagen", "e-Golf", false, "dc", "vrla", "32 KWh", 2014, 150, 110, true, 38000);
         ev[2] = new ElectricVehicle("Renault", "Zoe", false, "ac", "li-ion", "35 KWh", 2016, 130, 140, true, 33000);
         ev[3] = new ElectricVehicle("BMW", "i3", true, "bldc", "vrla", "37 KWh", 2016, 160, 155, true, 40000);
         ev[4] = new ElectricVehicle("Smart", "FourTwo", true, "bldc", "vrla", "28 KWh", 2013, 110, 130, true, 22000);
@@ -36,5 +38,57 @@ public class FilteredListTest {
 
     }
 
+    @Test
+    public void sortListTest() {
+        ElectricVehicleComparator evc = new ElectricVehicleComparator();
+        ArrayList<ElectricVehicle> ar = new ArrayList<ElectricVehicle>();
+        ar.add(new ElectricVehicle("Volkswagen", "e-UP", true, "bldc", "NiCd", "30 KWh", 2012, 100, 140, true, 25000));
+        ar.add(new ElectricVehicle("Volkswagen", "e-Golf", false, "dc", "vrla", "32 KWh", 2014, 150, 110, true, 38000));
+        ar.add(new ElectricVehicle("Renault", "Zoe", false, "ac", "li-ion", "35 KWh", 2016, 130, 140, true, 33000));
 
+        Collections.sort(ar, new ElectricVehicleComparator(
+                new PriceComparator(),
+                new RangePerChargeComparator(),
+                new HorsePowerComparator())
+        );
+        System.out.println(ar);
+
+        ArrayList<ElectricVehicle> expectedArray = new ArrayList<ElectricVehicle>();
+        expectedArray.add(new ElectricVehicle("Volkswagen", "e-UP", true, "bldc", "NiCd", "30 KWh", 2012, 100, 140, true, 25000));
+        expectedArray.add(new ElectricVehicle("Renault", "Zoe", false, "ac", "li-ion", "35 KWh", 2016, 130, 140, true, 33000));
+        expectedArray.add(new ElectricVehicle("Volkswagen", "e-Golf", false, "dc", "vrla", "32 KWh", 2014, 150, 110, true, 38000));
+
+
+        Assert.assertEquals(expectedArray, ar);
+        System.out.println(ar);
+    }
+
+    @Test
+    public void bonusTest() {
+        GreenBonusProgram gb = new GreenBonusProgram();
+
+        if (gb.getTotalSum() >= 10000) {
+            int bonusReceived = gb.getFixedBudget();
+            System.out.println("Customer receives bonus of: " + gb.getFixedBudget());
+        } else {
+            System.out.println("There are no more bonuses");
+        }
+        Assert.assertTrue(gb.getTotalSum() >= 10000);
+    }
+
+
+    @Test
+    public void discountedPriceTest() {
+        GreenBonusProgram greenb = new GreenBonusProgram();
+        ArrayList<PriceList> p = new ArrayList<PriceList>();
+        p.add(new PriceList(38000));
+
+        int newPrice = 0;
+        for (PriceList prl : p) {
+            newPrice = prl.getPriceL() - greenb.getFixedBudget();
+        }
+        System.out.println("new price: " + newPrice);
+        System.out.println("expected price: 28000");
+        Assert.assertEquals(28000, newPrice);
+    }
 }
