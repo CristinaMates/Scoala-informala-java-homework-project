@@ -75,11 +75,20 @@ public class Main {
 
         CarsFullPrice cfp = new CarsFullPrice();
         System.out.println("\n");
-        System.out.println("Cutomer purchase car at full price ");
+        System.out.println("Customer purchase car at full price ");
         for (CarDealership cars : cd) {
             cfp.getPrice(cd);
             System.out.println(cars);
         }
+
+
+        try {
+            BonusRequest bonusRequest = new BonusRequest();
+            bonusRequest.bonus();
+        } catch (IllegalArgumentException e) {
+            System.out.println("\n" + e.getMessage());
+        }
+
 
         BonusController bc = new BonusController();
         System.out.println("\n");

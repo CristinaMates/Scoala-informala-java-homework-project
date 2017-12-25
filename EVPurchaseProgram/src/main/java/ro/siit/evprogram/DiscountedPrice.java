@@ -14,9 +14,11 @@ public class DiscountedPrice {
 
     public int getDiscountedPrice(ArrayList<PriceList> prices) {
         int newPrice = 0;
-        for (PriceList prl : prices) {
-            newPrice = prl.getPriceL() - gbp.getFixedBudget();
+        if (gbp.getTotalSum() >= 10000) {
+            for (PriceList prl : prices) {
+                newPrice = prl.getPriceL() - gbp.getFixedBudget();
+            }
         }
-        return newPrice;
+            return newPrice;
     }
 }

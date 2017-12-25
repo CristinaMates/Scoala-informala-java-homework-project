@@ -2,8 +2,8 @@ package ro.siit.evprogram;
 
 public class GreenBonusProgram {
     private int fixedBudget = 10000;
-    private String[] historyOfPurchases;
-    private int totalSum = 10000000;
+    private String[] HistoryOfPurchases;
+    private int totalSum = 0;
 
     public int getFixedBudget() {
         return fixedBudget;
@@ -20,4 +20,13 @@ public class GreenBonusProgram {
     public void setTotalSum(int totalSum) {
         this.totalSum = totalSum;
     }
+
+    public String[] getHistoryOfPurchases() {
+        return HistoryOfPurchases;
+    }
+
+    public void setHistoryOfPurchases(String[] historyOfPurchases) {
+        HistoryOfPurchases = historyOfPurchases;
+    }
+
 }
