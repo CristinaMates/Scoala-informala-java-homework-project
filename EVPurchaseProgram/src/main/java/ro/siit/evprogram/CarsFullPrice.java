@@ -11,7 +11,7 @@ public class CarsFullPrice {
      * @return the car's full price
      */
 
-    public int getPrice(ArrayList<CarDealership> cd) {
+    public int getFullPrice(ArrayList<CarDealership> cd) {
         int fullPrice = 0;
         for (CarDealership c : cd) {
             fullPrice = c.getPrice();

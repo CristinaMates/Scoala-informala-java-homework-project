@@ -1,15 +1,17 @@
 package ro.siit.evprogram;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 /**
  * @author Cristina Mates
  */
 
 public class CarDealership {
+    private String manufacturer;
     private String type;
     private boolean stock;
     private int price;
+    private ArrayList<ElectricVehicle> electricVehicles;
 
     public CarDealership(String type, boolean stock, int price) {
         this.type = type;
@@ -39,6 +41,22 @@ public class CarDealership {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public ArrayList<ElectricVehicle> getElectricVehicles() {
+        return electricVehicles;
+    }
+
+    public void setElectricVehicles(ArrayList<ElectricVehicle> electricVehicles) {
+        this.electricVehicles = electricVehicles;
     }
 
     @Override

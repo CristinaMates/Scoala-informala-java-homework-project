@@ -11,7 +11,7 @@ public class FilterCars {
 
     public ElectricVehicle[] filter(ElectricVehicle[] ev) {
         for (int i = 0; i < ev.length - 1; i++) {
-            if ((ev[i].isFastCharging() == true) && (ev[i].isStock() == true)) {
+            if ((ev[i].isFastCharging() == true) && (ev[i].getStock() > 0)) {
                 System.out.println(ev[i]);
             }
         }
