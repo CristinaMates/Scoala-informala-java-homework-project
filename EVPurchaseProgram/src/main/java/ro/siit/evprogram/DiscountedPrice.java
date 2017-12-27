@@ -8,17 +8,17 @@ public class DiscountedPrice {
 
     /**
      * Method for calculating the price after using the discount
-     * @param prices
+     *
      * @return
      */
 
-    public int getDiscountedPrice(ArrayList<PriceList> prices) {
+    public int getDiscountedPrice(ArrayList<ElectricVehicle> elv) {
         int newPrice = 0;
         if (gbp.getTotalSum() >= 10000) {
-            for (PriceList prl : prices) {
-                newPrice = prl.getPriceL() - gbp.getFixedBudget();
+            for (int w = 0; w < elv.size(); w++) {
+                newPrice = elv.get(w).getPrice() - gbp.getFixedBudget();
             }
         }
-            return newPrice;
+        return newPrice;
     }
 }

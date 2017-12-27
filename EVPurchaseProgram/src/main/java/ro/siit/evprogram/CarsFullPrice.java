@@ -7,15 +7,17 @@ public class CarsFullPrice {
     /**
      * Method for getting the car's full price
      *
-     * @param cd
      * @return the car's full price
      */
+    CustomerBudget customerb = new CustomerBudget();
 
-    public int getFullPrice(ArrayList<CarDealership> cd) {
+    public int getFullPrice(ArrayList<ElectricVehicle> vehicle) {
         int fullPrice = 0;
-        for (CarDealership c : cd) {
-            fullPrice = c.getPrice();
+        for (int a = 0; a < vehicle.size(); a++) {
+            if ((vehicle.get(a).getStock() > 0) && (vehicle.get(a).getPrice() <= customerb.getCustomerbudget())) {
+                fullPrice = vehicle.get(a).getPrice();
+            }
         }
-        return fullPrice;
+            return fullPrice;
     }
 }

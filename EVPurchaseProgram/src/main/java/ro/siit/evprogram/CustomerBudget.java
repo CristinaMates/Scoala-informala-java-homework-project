@@ -8,13 +8,17 @@ import java.util.ArrayList;
 
 public class CustomerBudget {
 
-    public void customerBudget(ArrayList<ElectricVehicle> el) throws IllegalArgumentException {
+    private int customerbudget = 3000;
 
-        int customerbudget = 3000;
+    public void customerBudget(ArrayList<ElectricVehicle> el) throws IllegalArgumentException {
         for (int z = 0; z < el.size(); z++) {
             if (el.get(z).getPrice() > customerbudget) {
                 throw new IllegalArgumentException("Customer's budget should not be less than the car's price.");
             }
         }
+    }
+
+    public int getCustomerbudget() {
+        return customerbudget;
     }
 }

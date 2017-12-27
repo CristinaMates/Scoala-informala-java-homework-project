@@ -9,7 +9,6 @@ public class Main {
         /**
          * Created an object ElectricVehicle array
          */
-
         //ElectricVehicle[] ev = new ElectricVehicle[9];
         //ev[0] = new ElectricVehicle("Volkswagen", "e-UP", true, "bldc", "Nicd", "30 KWh", 2012, 100, 140, 3, 25000);
         //ev[1] = new ElectricVehicle("Volkswagen", "e-Golf", false, "dc", "vrla", "32 KWh", 2014, 150, 110, 5, 38000);
@@ -32,7 +31,6 @@ public class Main {
          */
         //for (ElectricVehicle filtered : ev) {
         //System.out.println(filtered);}
-
 
         ArrayList<ElectricVehicle> evList = new ArrayList<ElectricVehicle>();
         evList.add(new ElectricVehicle("Volkswagen", "e-UP", true, "bldc", "Nicd", "30 KWh", 2012, 100, 140, 3, 25000));
@@ -65,7 +63,7 @@ public class Main {
             ArrayList<ElectricVehicle> ele = new ArrayList<ElectricVehicle>();
             ele.add(new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 0, 27000));
             cStock.carsStock(ele);
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println("\n" + e.getMessage());
         }
 
@@ -77,34 +75,21 @@ public class Main {
             ArrayList<ElectricVehicle> el = new ArrayList<ElectricVehicle>();
             el.add(new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 0, 27000));
             customer.customerBudget(el);
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println("\n" + e.getMessage());
         }
-
-        ArrayList<CarDealership> cd = new ArrayList<CarDealership>();
-        cd.add(new CarDealership("new", true, 25000));
-        cd.add(new CarDealership("used", false, 22700));
-        cd.add(new CarDealership("new", true, 33000));
-        cd.add(new CarDealership("new", true, 38000));
-        cd.add(new CarDealership("new", true, 40000));
-        cd.add(new CarDealership("new", false, 22700));
-        cd.add(new CarDealership("used", true, 22000));
-        cd.add(new CarDealership("new", true, 23000));
 
         /**
          * Print car's full price
          */
+        ArrayList<ElectricVehicle> vehicle = new ArrayList<ElectricVehicle>();
+        vehicle.add(new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 8, 27000));
         CarsFullPrice cfp = new CarsFullPrice();
-        System.out.println("\n");
-        System.out.println("Customer purchase car at full price ");
-        for (CarDealership cars : cd) {
-            cfp.getFullPrice(cd);
-            System.out.println(cars);
-        }
+        System.out.println("\nCustomer purchase car at full price: " + cfp.getFullPrice(vehicle));
 
         /**
-        * Try and catch block for handling the exception thown by the handleBonusRequest method
-        */
+         * Try and catch block for handling the exception thown by the handleBonusRequest method
+         */
         try {
             BonusRequest bonusRequest = new BonusRequest();
             bonusRequest.handleBonusRequest();
@@ -120,17 +105,9 @@ public class Main {
         System.out.println(bc.bonusController());
 
         /**
-         * ArrayList that contains the full prices
-         */
-        ArrayList<PriceList> prices = new ArrayList<PriceList>();
-        prices.add(new PriceList(27000));
-
-        /**
          * Print the car's new price after receiving the discount
          */
         DiscountedPrice dp = new DiscountedPrice();
-        System.out.println("\n");
-        System.out.println("Customer purchases car with discounted price");
-        System.out.println(dp.getDiscountedPrice(prices));
+        System.out.println("\nCar's price after applying the discount is: " + dp.getDiscountedPrice(vehicle));
     }
 }
