@@ -15,18 +15,6 @@ public class ElectricVehicle {
 
     /**
      * Constructor for initializing ElectricVehicle object
-     *
-     * @param manufacturer
-     * @param model
-     * @param fastCharging
-     * @param stock
-     * @param electricMotor
-     * @param electricBattery
-     * @param energyConsumption
-     * @param productionYear
-     * @param rangePerCharge
-     * @param horsePower
-     * @param price
      */
 
     public ElectricVehicle(String manufacturer, String model, boolean fastCharging, String electricMotor, String electricBattery, String energyConsumption, int productionYear, int rangePerCharge, int horsePower, int stock, int price) {

@@ -14,7 +14,8 @@ public class DiscountedPriceTest {
         e.add(new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 0, 28000));
 
         int newPrice = 0;
-        if (greenb.getTotalSum() >= 10000) {
+        int totalBudget = 10000000;
+        if (totalBudget >= 10000) {
             for (int w = 0; w < e.size(); w++) {
                 newPrice = e.get(w).getPrice() - greenb.getFixedBudget();
             }

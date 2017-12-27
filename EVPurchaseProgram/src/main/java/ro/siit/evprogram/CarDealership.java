@@ -8,30 +8,31 @@ import java.util.ArrayList;
 
 public class CarDealership {
     private String manufacturer;
-    private String type;
-    private boolean stock;
+    private boolean newCar = true;
+    private int stock;
     private int price;
     private ArrayList<ElectricVehicle> electricVehicles;
 
-    public CarDealership(String type, boolean stock, int price) {
-        this.type = type;
+    public CarDealership(String manufacturer, boolean newCar, int stock, int price) {
+        this.manufacturer = manufacturer;
+        this.newCar = newCar;
         this.stock = stock;
         this.price = price;
     }
 
-    public String getType() {
-        return type;
+    public boolean isNewCar() {
+        return newCar;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setNewCar(boolean newCar) {
+        this.newCar = newCar;
     }
 
-    public boolean getStock() {
+    public int getStock() {
         return stock;
     }
 
-    public void setStock(boolean stock) {
+    public void setStock(int stock) {
         this.stock = stock;
     }
 
@@ -59,14 +60,6 @@ public class CarDealership {
         this.electricVehicles = electricVehicles;
     }
 
-    @Override
-    public String toString() {
-        return "CarDealership{" +
-                "type='" + type + '\'' +
-                ", stock=" + stock +
-                ", price=" + price +
-                '}';
-    }
 
     public void requestBonus(int price){
 

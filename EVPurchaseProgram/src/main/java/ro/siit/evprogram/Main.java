@@ -105,6 +105,18 @@ public class Main {
         System.out.println(bc.bonusController());
 
         /**
+         * Try and catch block for handling the exception thrown by the purchaseUsedEV method
+         */
+        try{
+            ArrayList<CarDealership> car = new ArrayList<CarDealership>();
+            car.add(new CarDealership("Hyundai", false, 0, 27000));
+            UsedEV usedEV = new UsedEV("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 8, 27000);
+            usedEV.purchaseUsedEV(car);
+        }catch (IllegalArgumentException e){
+            System.out.println("\n" + e.getMessage());
+        }
+
+        /**
          * Print the car's new price after receiving the discount
          */
         DiscountedPrice dp = new DiscountedPrice();
