@@ -1,6 +1,6 @@
 package ro.siit.evprogram;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 /**
  * @author Cristina Mates
@@ -10,7 +10,7 @@ public class CarDealership {
     private String type;
     private int stock;
     private int price;
-    private GreenBonusProgram gbp;
+    private GreenBonusProgram gbprogram;
     ElectricVehicle[] ev = new ElectricVehicle[9];
 
 
@@ -42,22 +42,6 @@ public class CarDealership {
 
     public void setPrice(int price) {
         this.price = price;
-    }
-
-    public GreenBonusProgram getGbp() {
-        return gbp;
-    }
-
-    public void setGbp(GreenBonusProgram gbp) {
-        this.gbp = gbp;
-    }
-
-    public ElectricVehicle[] getEv() {
-        return ev;
-    }
-
-    public void setEv(ElectricVehicle[] ev) {
-        this.ev = ev;
     }
 
     /**
@@ -92,15 +76,43 @@ public class CarDealership {
         return elecv;
     }
 
+    public int getFullPrice(ArrayList<ElectricVehicle> vehicle) {
+        int fullPrice = 0;
+        for (int a = 0; a <= vehicle.size() - 1; a++) {
+            fullPrice = vehicle.get(a).getPrice();
+        }
+        return fullPrice;
+    }
+
+    /**
+     * Method for calculating the price after using the discount
+     *
+     * @param e
+     * @return
+     */
+
+    public int getDiscountedPrice(ArrayList<ElectricVehicle> e) {
+        GreenBonusProgram gbp = new GreenBonusProgram();
+        int newPrice = 0;
+        for (ElectricVehicle elevehicle : e) {
+            newPrice = elevehicle.getPrice() - gbp.getFixedBudget();
+        }
+        return newPrice;
+    }
+
     @Override
     public String toString() {
         return "CarDealership{" +
                 "type='" + type + '\'' +
                 ", stock=" + stock +
                 ", price=" + price +
-                ", gbp=" + gbp +
-                ", ev=" + Arrays.toString(ev) +
                 '}';
     }
+
+    public void requestBonus(int price) {
+
+        this.price = price;
+    }
+
 }
 
