@@ -7,7 +7,7 @@ public class ElectricVehicle {
     private String manufacturer;
     private String model;
     private int productionYear;
-    private boolean stock;
+    private int stock;
     private boolean fastCharging;
     private int rangePerCharge;
     private int horsePower;
@@ -29,7 +29,7 @@ public class ElectricVehicle {
      * @param price
      */
 
-    public ElectricVehicle(String manufacturer, String model, boolean fastCharging, String electricMotor, String electricBattery, String energyConsumption, int productionYear, int rangePerCharge, int horsePower, boolean stock, int price) {
+    public ElectricVehicle(String manufacturer, String model, boolean fastCharging, String electricMotor, String electricBattery, String energyConsumption, int productionYear, int rangePerCharge, int horsePower, int stock, int price) {
         this.manufacturer = manufacturer;
         this.model = model;
         this.fastCharging = fastCharging;
@@ -115,11 +115,11 @@ public class ElectricVehicle {
         this.horsePower = horsePower;
     }
 
-    public boolean isStock() {
+    public int getStock() {
         return stock;
     }
 
-    public void setStock(boolean stock) {
+    public void setStock(int stock) {
         this.stock = stock;
     }
 
@@ -162,7 +162,7 @@ public class ElectricVehicle {
         result = 31 * result + (manufacturer != null ? manufacturer.hashCode() : 0);
         result = 31 * result + (model != null ? model.hashCode() : 0);
         result = 31 * result + productionYear;
-        result = 31 * result + (stock ? 1 : 0);
+        result = 31 * result + stock;
         result = 31 * result + (fastCharging ? 1 : 0);
         result = 31 * result + rangePerCharge;
         result = 31 * result + horsePower;
