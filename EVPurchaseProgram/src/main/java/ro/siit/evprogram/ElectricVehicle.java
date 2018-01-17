@@ -7,7 +7,7 @@ public class ElectricVehicle {
     private String manufacturer;
     private String model;
     private int productionYear;
-    private boolean stock;
+    private int stock;
     private boolean fastCharging;
     private String rangePerCharge;
     private String horsePower;
@@ -27,7 +27,7 @@ public class ElectricVehicle {
      * @param horsePower
      */
 
-    public ElectricVehicle(String manufacturer, String model, boolean fastCharging, String electricMotor, String electricBattery, String energyConsumption, int productionYear, String rangePerCharge, String horsePower, boolean stock) {
+    public ElectricVehicle(String manufacturer, String model, boolean fastCharging, String electricMotor, String electricBattery, String energyConsumption, int productionYear, String rangePerCharge, String horsePower, int stock) {
         this.manufacturer = manufacturer;
         this.model = model;
         this.fastCharging = fastCharging;
@@ -112,11 +112,28 @@ public class ElectricVehicle {
         this.horsePower = horsePower;
     }
 
-    public boolean isStock() {
+    public int getStock() {
         return stock;
     }
 
-    public void setStock(boolean stock) {
+    public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    @Override
+    public String toString() {
+        return "ElectricVehicle{" +
+                "electricMotor='" + electricMotor + '\'' +
+                ", electricBattery='" + electricBattery + '\'' +
+                ", energyConsumption='" + energyConsumption + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", productionYear=" + productionYear +
+                ", stock=" + stock +
+                ", fastCharging=" + fastCharging +
+                ", rangePerCharge='" + rangePerCharge + '\'' +
+                ", horsePower='" + horsePower + '\'' +
+                '}';
+
     }
 }

@@ -10,26 +10,15 @@ public class CarDealership {
     private String type;
     private int stock;
     private int price;
-    GreenBonusProgram gbp;
+    private GreenBonusProgram gbp;
     ElectricVehicle[] ev = new ElectricVehicle[9];
 
-    public CarDealership(String type, int stock, int price, ElectricVehicle[] ev) {
+
+    public CarDealership(String type, int stock, int price) {
         this.type = type;
         this.stock = stock;
         this.price = price;
-        this.ev = ev;
-        ev[0] = new ElectricVehicle("Volkswagen", "e-UP", true, "bldc", "Nicd", "30 KWh", 2012, "100 miles", "140 hp", true);
-        ev[1] = new ElectricVehicle("Volkswagen", "e-Golf", false, "dc", "vrla", "32 KWh", 2014, "150 miles", "110 hp", true);
-        ev[2] = new ElectricVehicle("Renault", "Zoe", false, "ac", "li-ion", "35 KWh", 2016, "130 miles", "140 hp", true);
-        ev[3] = new ElectricVehicle("BMW", "i3", true, "bldc", "vrla", "37 KWh", 2016, "160 miles", "155 hp", true);
-        ev[4] = new ElectricVehicle("Smart", "FourTwo", true, "bldc", "vrla", "28 KWh", 2013, "110 miles", "130 hp", true);
-        ev[5] = new ElectricVehicle("Smart", "FourFour", true, "ac", "NiCd", "30 KWh", 2017, "90 miles", "115 hp", false);
-        ev[6] = new ElectricVehicle("Smart", "FourTwo Cabrio", false, "bldc", "li-ion", "42 KWh", 2016, "180 miles", "120 hp", true);
-        ev[7] = new ElectricVehicle("Kia", "Soul", true, "dc", "NiCd", "40 KWh", 2015, "125 miles", "90 hp", false);
-        ev[8] = new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, "145 miles", "100 hp", true);
-
     }
-
 
     public String getType() {
         return type;
@@ -71,6 +60,38 @@ public class CarDealership {
         this.ev = ev;
     }
 
+    /**
+     * Created method in order to filter the array based on the fast-charging criteria
+     *
+     * @param elv
+     * @return
+     */
+
+    public ElectricVehicle[] filterFastCharging(ElectricVehicle[] elv) {
+        for (int i = 0; i < elv.length; i++) {
+            if (elv[i].isFastCharging() == true) {
+                System.out.println("Fast-charging cars: " + elv[i]);
+            }
+        }
+        return elv;
+    }
+
+    /**
+     * Created method in order to filter the array based on the stock criteria
+     *
+     * @param elecv
+     * @return
+     */
+
+    public ElectricVehicle[] filterStock(ElectricVehicle[] elecv) {
+        for (int i = 0; i < elecv.length; i++) {
+            if (elecv[i].getStock() > 0) {
+                System.out.println("Cars in stock: " + elecv[i]);
+            }
+        }
+        return elecv;
+    }
+
     @Override
     public String toString() {
         return "CarDealership{" +
@@ -82,3 +103,4 @@ public class CarDealership {
                 '}';
     }
 }
+
