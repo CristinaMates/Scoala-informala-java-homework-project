@@ -10,9 +10,13 @@ public class CarDealership {
     private String type;
     private int stock;
     private int price;
+ milestone4
     private GreenBonusProgram gbprogram;
     ElectricVehicle[] ev = new ElectricVehicle[9];
 
+
+
+ milestone3
     public CarDealership(String type, int stock, int price) {
         this.type = type;
         this.stock = stock;
@@ -99,6 +103,38 @@ public class CarDealership {
         return newPrice;
     }
 
+    /**
+     * Created method in order to filter the array based on the fast-charging criteria
+     *
+     * @param elv
+     * @return
+     */
+
+    public ElectricVehicle[] filterFastCharging(ElectricVehicle[] elv) {
+        for (int i = 0; i < elv.length; i++) {
+            if (elv[i].isFastCharging() == true) {
+                System.out.println("Fast-charging cars: " + elv[i]);
+            }
+        }
+        return elv;
+    }
+
+    /**
+     * Created method in order to filter the array based on the stock criteria
+     *
+     * @param elecv
+     * @return
+     */
+
+    public ElectricVehicle[] filterStock(ElectricVehicle[] elecv) {
+        for (int i = 0; i < elecv.length; i++) {
+            if (elecv[i].getStock() > 0) {
+                System.out.println("Cars in stock: " + elecv[i]);
+            }
+        }
+        return elecv;
+    }
+
     @Override
     public String toString() {
         return "CarDealership{" +
@@ -114,3 +150,4 @@ public class CarDealership {
     }
 
 }
+
