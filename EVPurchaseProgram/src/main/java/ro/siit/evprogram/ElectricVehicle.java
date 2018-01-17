@@ -29,10 +29,7 @@ public class ElectricVehicle {
      * @param price
      */
 
- milestone4
     public ElectricVehicle(String manufacturer, String model, boolean fastCharging, String electricMotor, String electricBattery, String energyConsumption, int productionYear, int rangePerCharge, int horsePower, int stock, int price) {
-
- milestone3
         this.manufacturer = manufacturer;
         this.model = model;
         this.fastCharging = fastCharging;
@@ -126,7 +123,6 @@ public class ElectricVehicle {
         this.stock = stock;
     }
 
-  milestone4
     public int getPrice() {
         return price;
     }
@@ -190,8 +186,5 @@ public class ElectricVehicle {
                 ", fastCharging=" + fastCharging +
                 '}';
 
-
-
- milestone3
     }
 }

@@ -12,7 +12,7 @@ public class Main {
          */
 
         ElectricVehicle[] ev = new ElectricVehicle[9];
- milestone4
+
         ev[0] = new ElectricVehicle("Volkswagen", "e-UP", true, "bldc", "Nicd", "30 KWh", 2012, 100, 140, 3, 25000);
         ev[1] = new ElectricVehicle("Volkswagen", "e-Golf", false, "dc", "vrla", "32 KWh", 2014, 150, 110, 5, 38000);
         ev[2] = new ElectricVehicle("Renault", "Zoe", false, "ac", "li-ion", "35 KWh", 2016, 130, 140, 2, 33000);
@@ -23,7 +23,6 @@ public class Main {
         ev[7] = new ElectricVehicle("Kia", "Soul", true, "dc", "NiCd", "40 KWh", 2015, 125, 90, 8, 34000);
         ev[8] = new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 0, 27000);
 
-      milestone3
 
         /**
          * Filter cars by fast-charging and by stock
@@ -33,7 +32,6 @@ public class Main {
         filterc.filterFastCharging(ev);
         System.out.println("\n");
         filterc.filterStock(ev);
- milestone4
         System.out.println("\n");
 
 
@@ -61,7 +59,6 @@ public class Main {
             System.out.println(evl);
         }
 
- milestone3
 
         /**
          * Purchase car at full price
@@ -76,7 +73,6 @@ public class Main {
         BonusController bc = new BonusController();
         System.out.println("\n");
         System.out.println(bc.bonusController());
-
 
         /**
          * Purchase car with discounted price
