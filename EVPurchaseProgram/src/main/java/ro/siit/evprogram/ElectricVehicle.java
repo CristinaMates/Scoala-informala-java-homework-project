@@ -7,8 +7,9 @@ public class ElectricVehicle {
     private String manufacturer;
     private String model;
     private int productionYear;
+    private int stock;
     private boolean fastCharging;
-    private String rangerPerCharge;
+    private String rangePerCharge;
     private String horsePower;
 
     /**
@@ -16,13 +17,28 @@ public class ElectricVehicle {
      *
      * @param manufacturer
      * @param model
+     * @param fastCharging
+     * @param stock
+     * @param electricMotor
+     * @param electricBattery
+     * @param energyConsumption
+     * @param productionYear
+     * @param rangePerCharge
+     * @param horsePower
      */
 
-    public ElectricVehicle(String manufacturer, String model) {
+    public ElectricVehicle(String manufacturer, String model, boolean fastCharging, String electricMotor, String electricBattery, String energyConsumption, int productionYear, String rangePerCharge, String horsePower, int stock) {
         this.manufacturer = manufacturer;
         this.model = model;
+        this.fastCharging = fastCharging;
+        this.electricMotor = electricMotor;
+        this.electricBattery = electricBattery;
+        this.energyConsumption = energyConsumption;
+        this.productionYear = productionYear;
+        this.rangePerCharge = rangePerCharge;
+        this.horsePower = horsePower;
+        this.stock = stock;
     }
-
 
     public String getElectricMotor() {
         return electricMotor;
@@ -80,12 +96,12 @@ public class ElectricVehicle {
         this.fastCharging = fastCharging;
     }
 
-    public String getRangerPerCharge() {
-        return rangerPerCharge;
+    public String getRangePerCharge() {
+        return rangePerCharge;
     }
 
-    public void setRangerPerCharge(String rangerPerCharge) {
-        this.rangerPerCharge = rangerPerCharge;
+    public void setRangePerCharge(String rangerPerCharge) {
+        this.rangePerCharge = rangerPerCharge;
     }
 
     public String getHorsePower() {
@@ -96,4 +112,28 @@ public class ElectricVehicle {
         this.horsePower = horsePower;
     }
 
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    @Override
+    public String toString() {
+        return "ElectricVehicle{" +
+                "electricMotor='" + electricMotor + '\'' +
+                ", electricBattery='" + electricBattery + '\'' +
+                ", energyConsumption='" + energyConsumption + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", productionYear=" + productionYear +
+                ", stock=" + stock +
+                ", fastCharging=" + fastCharging +
+                ", rangePerCharge='" + rangePerCharge + '\'' +
+                ", horsePower='" + horsePower + '\'' +
+                '}';
+
+    }
 }
