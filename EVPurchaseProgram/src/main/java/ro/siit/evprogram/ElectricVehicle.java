@@ -9,8 +9,9 @@ public class ElectricVehicle {
     private int productionYear;
     private int stock;
     private boolean fastCharging;
-    private String rangePerCharge;
-    private String horsePower;
+    private int rangePerCharge;
+    private int horsePower;
+    private int price;
 
     /**
      * Constructor for initializing ElectricVehicle object
@@ -25,9 +26,13 @@ public class ElectricVehicle {
      * @param productionYear
      * @param rangePerCharge
      * @param horsePower
+     * @param price
      */
 
-    public ElectricVehicle(String manufacturer, String model, boolean fastCharging, String electricMotor, String electricBattery, String energyConsumption, int productionYear, String rangePerCharge, String horsePower, int stock) {
+ milestone4
+    public ElectricVehicle(String manufacturer, String model, boolean fastCharging, String electricMotor, String electricBattery, String energyConsumption, int productionYear, int rangePerCharge, int horsePower, int stock, int price) {
+
+ milestone3
         this.manufacturer = manufacturer;
         this.model = model;
         this.fastCharging = fastCharging;
@@ -38,6 +43,7 @@ public class ElectricVehicle {
         this.rangePerCharge = rangePerCharge;
         this.horsePower = horsePower;
         this.stock = stock;
+        this.price = price;
     }
 
     public String getElectricMotor() {
@@ -96,19 +102,19 @@ public class ElectricVehicle {
         this.fastCharging = fastCharging;
     }
 
-    public String getRangePerCharge() {
+    public int getRangePerCharge() {
         return rangePerCharge;
     }
 
-    public void setRangePerCharge(String rangerPerCharge) {
+    public void setRangePerCharge(int rangerPerCharge) {
         this.rangePerCharge = rangerPerCharge;
     }
 
-    public String getHorsePower() {
+    public int getHorsePower() {
         return horsePower;
     }
 
-    public void setHorsePower(String horsePower) {
+    public void setHorsePower(int horsePower) {
         this.horsePower = horsePower;
     }
 
@@ -120,20 +126,72 @@ public class ElectricVehicle {
         this.stock = stock;
     }
 
+  milestone4
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ElectricVehicle that = (ElectricVehicle) o;
+
+        if (productionYear != that.productionYear) return false;
+        if (stock != that.stock) return false;
+        if (fastCharging != that.fastCharging) return false;
+        if (rangePerCharge != that.rangePerCharge) return false;
+        if (horsePower != that.horsePower) return false;
+        if (price != that.price) return false;
+        if (electricMotor != null ? !electricMotor.equals(that.electricMotor) : that.electricMotor != null)
+            return false;
+        if (electricBattery != null ? !electricBattery.equals(that.electricBattery) : that.electricBattery != null)
+            return false;
+        if (energyConsumption != null ? !energyConsumption.equals(that.energyConsumption) : that.energyConsumption != null)
+            return false;
+        if (manufacturer != null ? !manufacturer.equals(that.manufacturer) : that.manufacturer != null) return false;
+        return model != null ? model.equals(that.model) : that.model == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = electricMotor != null ? electricMotor.hashCode() : 0;
+        result = 31 * result + (electricBattery != null ? electricBattery.hashCode() : 0);
+        result = 31 * result + (energyConsumption != null ? energyConsumption.hashCode() : 0);
+        result = 31 * result + (manufacturer != null ? manufacturer.hashCode() : 0);
+        result = 31 * result + (model != null ? model.hashCode() : 0);
+        result = 31 * result + productionYear;
+        result = 31 * result + stock;
+        result = 31 * result + (fastCharging ? 1 : 0);
+        result = 31 * result + rangePerCharge;
+        result = 31 * result + horsePower;
+        result = 31 * result + price;
+        return result;
+    }
+
     @Override
     public String toString() {
         return "ElectricVehicle{" +
-                "electricMotor='" + electricMotor + '\'' +
-                ", electricBattery='" + electricBattery + '\'' +
-                ", energyConsumption='" + energyConsumption + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
+                "manufacturer='" + manufacturer + '\'' +
                 ", model='" + model + '\'' +
                 ", productionYear=" + productionYear +
-                ", stock=" + stock +
-                ", fastCharging=" + fastCharging +
+                ", price=" + price +
                 ", rangePerCharge='" + rangePerCharge + '\'' +
                 ", horsePower='" + horsePower + '\'' +
+                ", electricMotor='" + electricMotor + '\'' +
+                ", electricBattery='" + electricBattery + '\'' +
+                ", energyConsumption='" + energyConsumption + '\'' +
+                ", stock=" + stock +
+                ", fastCharging=" + fastCharging +
                 '}';
 
+
+
+ milestone3
     }
 }

@@ -1,6 +1,6 @@
 package ro.siit.evprogram;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 /**
  * @author Cristina Mates
@@ -10,10 +10,13 @@ public class CarDealership {
     private String type;
     private int stock;
     private int price;
-    private GreenBonusProgram gbp;
+ milestone4
+    private GreenBonusProgram gbprogram;
     ElectricVehicle[] ev = new ElectricVehicle[9];
 
 
+
+ milestone3
     public CarDealership(String type, int stock, int price) {
         this.type = type;
         this.stock = stock;
@@ -44,20 +47,60 @@ public class CarDealership {
         this.price = price;
     }
 
-    public GreenBonusProgram getGbp() {
-        return gbp;
+    /**
+     * Created method in order to filter the array based on the fast-charging criteria
+     *
+     * @param elv
+     * @return
+     */
+
+    public ElectricVehicle[] filterFastCharging(ElectricVehicle[] elv) {
+        for (int i = 0; i < elv.length; i++) {
+            if (elv[i].isFastCharging() == true) {
+                System.out.println("Fast-charging cars: " + elv[i]);
+            }
+        }
+        return elv;
     }
 
-    public void setGbp(GreenBonusProgram gbp) {
-        this.gbp = gbp;
+    /**
+     * Created method in order to filter the array based on the stock criteria
+     *
+     * @param elecv
+     * @return
+     */
+
+    public ElectricVehicle[] filterStock(ElectricVehicle[] elecv) {
+        for (int i = 0; i < elecv.length; i++) {
+            if (elecv[i].getStock() > 0) {
+                System.out.println("Cars in stock: " + elecv[i]);
+            }
+        }
+        return elecv;
     }
 
-    public ElectricVehicle[] getEv() {
-        return ev;
+    public int getFullPrice(ArrayList<ElectricVehicle> vehicle) {
+        int fullPrice = 0;
+        for (int a = 0; a <= vehicle.size() - 1; a++) {
+            fullPrice = vehicle.get(a).getPrice();
+        }
+        return fullPrice;
     }
 
-    public void setEv(ElectricVehicle[] ev) {
-        this.ev = ev;
+    /**
+     * Method for calculating the price after using the discount
+     *
+     * @param e
+     * @return
+     */
+    
+    public int getDiscountedPrice(ArrayList<ElectricVehicle> e) {
+        GreenBonusProgram gbp = new GreenBonusProgram();
+        int newPrice = 0;
+        for (ElectricVehicle elevehicle : e) {
+            newPrice = elevehicle.getPrice() - gbp.getFixedBudget();
+        }
+        return newPrice;
     }
 
     /**
@@ -98,9 +141,13 @@ public class CarDealership {
                 "type='" + type + '\'' +
                 ", stock=" + stock +
                 ", price=" + price +
-                ", gbp=" + gbp +
-                ", ev=" + Arrays.toString(ev) +
                 '}';
     }
+
+    public void requestBonus(int price) {
+
+        this.price = price;
+    }
+
 }
 
