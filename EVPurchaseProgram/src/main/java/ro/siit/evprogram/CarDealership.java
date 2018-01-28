@@ -113,9 +113,22 @@ public class CarDealership {
         GreenBonusProgram gbp = new GreenBonusProgram();
         int newPrice = 0;
         for (ElectricVehicle elevehicle : e) {
-            newPrice = elevehicle.getPrice() - gbp.getFixedBudget();
+            if (gbp.getTotalSum() > 10000) {
+                newPrice = elevehicle.getPrice() - gbp.getFixedBudget();
+            }
         }
-        return newPrice;
+            return newPrice;
+    }
+
+    /**
+     * Method for throwing an exception if the car is out of stock.
+     */
+    public void carsStock(ArrayList<ElectricVehicle> ele) throws IllegalArgumentException {
+        for (int i = 0; i < ele.size(); i++) {
+            if ((ele.get(i).getStock() <= 0)) {
+                throw new IllegalArgumentException("The car should be in stock in order to purchase it.");
+            }
+        }
     }
 
     @Override

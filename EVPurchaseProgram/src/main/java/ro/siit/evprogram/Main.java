@@ -61,7 +61,7 @@ public class Main {
          * Try and catch block for handling the exception thrown by the carsStock method
          */
         try {
-            CarsStock cStock = new CarsStock();
+            CarDealership cStock = new CarDealership("Hyundai", true, 3, 27000);
             ArrayList<ElectricVehicle> ele = new ArrayList<ElectricVehicle>();
             ele.add(new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 0, 27000));
             cStock.carsStock(ele);
@@ -93,7 +93,7 @@ public class Main {
          * Try and catch block for handling the exception thrown by the handleBonusRequest method
          */
         try {
-            BonusRequest bonusRequest = new BonusRequest();
+            GreenBonusProgram bonusRequest = new GreenBonusProgram();
             bonusRequest.handleBonusRequest();
         } catch (IllegalArgumentException e) {
             System.out.println("\n" + e.getMessage());
