@@ -6,31 +6,32 @@ import java.util.Collections;
 public class Main {
     public static void main(String[] args) {
 
+
         /**
          * Created an object ElectricVehicle array
          */
-        //ElectricVehicle[] ev = new ElectricVehicle[9];
-        //ev[0] = new ElectricVehicle("Volkswagen", "e-UP", true, "bldc", "Nicd", "30 KWh", 2012, 100, 140, 3, 25000);
-        //ev[1] = new ElectricVehicle("Volkswagen", "e-Golf", false, "dc", "vrla", "32 KWh", 2014, 150, 110, 5, 38000);
-        //ev[2] = new ElectricVehicle("Renault", "Zoe", false, "ac", "li-ion", "35 KWh", 2016, 130, 140, 2, 33000);
-        //ev[3] = new ElectricVehicle("BMW", "i3", true, "bldc", "vrla", "37 KWh", 2016, 160, 155, 1, 40000);
-        //ev[4] = new ElectricVehicle("Smart", "FourTwo", true, "bldc", "vrla", "28 KWh", 2013, 110, 130, 6, 22000);
-        //ev[5] = new ElectricVehicle("Smart", "FourFour", true, "ac", "NiCd", "30 KWh", 2017, 90, 115, 0, 22700);
-        //ev[6] = new ElectricVehicle("Smart", "FourTwo Cabrio", false, "bldc", "li-ion", "42 KWh", 2016, 180, 120, 10, 23000);
-        //ev[7] = new ElectricVehicle("Kia", "Soul", true, "dc", "NiCd", "40 KWh", 2015, 125, 90, 8, 34000);
-        //ev[8] = new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 0, 27000);
+
+        ElectricVehicle[] ev = new ElectricVehicle[9];
+        ev[0] = new ElectricVehicle("Volkswagen", "e-UP", true, "bldc", "Nicd", "30 KWh", 2012, 100, 140, 3, 25000);
+        ev[1] = new ElectricVehicle("Volkswagen", "e-Golf", false, "dc", "vrla", "32 KWh", 2014, 150, 110, 5, 38000);
+        ev[2] = new ElectricVehicle("Renault", "Zoe", false, "ac", "li-ion", "35 KWh", 2016, 130, 140, 2, 33000);
+        ev[3] = new ElectricVehicle("BMW", "i3", true, "bldc", "vrla", "37 KWh", 2016, 160, 155, 1, 40000);
+        ev[4] = new ElectricVehicle("Smart", "FourTwo", true, "bldc", "vrla", "28 KWh", 2013, 110, 130, 6, 22000);
+        ev[5] = new ElectricVehicle("Smart", "FourFour", true, "ac", "NiCd", "30 KWh", 2017, 90, 115, 0, 22700);
+        ev[6] = new ElectricVehicle("Smart", "FourTwo Cabrio", false, "bldc", "li-ion", "42 KWh", 2016, 180, 120, 10, 23000);
+        ev[7] = new ElectricVehicle("Kia", "Soul", true, "dc", "NiCd", "40 KWh", 2015, 125, 90, 8, 34000);
+        ev[8] = new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 0, 27000);
 
         /**
-         * Filter the array
+         * Filter cars by fast-charging and by stock
          */
-        //FilterCars filterc = new FilterCars();
-        //ElectricVehicle[] filteredCars = filterc.filter(ev);
 
-        /**
-         * Print the array
-         */
-        //for (ElectricVehicle filtered : ev) {
-        //System.out.println(filtered);}
+        CarDealership filterc = new CarDealership("Hyundai", true, 3, 27000);
+        filterc.filterFastCharging(ev);
+        System.out.println("\n");
+        filterc.filterStock(ev);
+        System.out.println("\n");
+
 
         ArrayList<ElectricVehicle> evList = new ArrayList<ElectricVehicle>();
         evList.add(new ElectricVehicle("Volkswagen", "e-UP", true, "bldc", "Nicd", "30 KWh", 2012, 100, 140, 3, 25000));
@@ -46,6 +47,7 @@ public class Main {
         /**
          * Sorting an ArrayList collection by multiple attributes
          */
+
         Collections.sort(evList, new ElectricVehicleComparator(
                 new PriceComparator(),
                 new RangePerChargeComparator(),
@@ -80,15 +82,15 @@ public class Main {
         }
 
         /**
-         * Print car's full price
+         * Purchase car at full price
          */
         ArrayList<ElectricVehicle> vehicle = new ArrayList<ElectricVehicle>();
         vehicle.add(new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 8, 27000));
-        CarsFullPrice cfp = new CarsFullPrice();
-        System.out.println("\nCustomer purchase car at full price: " + cfp.getFullPrice(vehicle));
+        CarDealership cd = new CarDealership("Hyundai", true, 3, 27000);
+        System.out.println("\nCustomer purchases car at full price: " + cd.getFullPrice(vehicle));
 
         /**
-         * Try and catch block for handling the exception thown by the handleBonusRequest method
+         * Try and catch block for handling the exception thrown by the handleBonusRequest method
          */
         try {
             BonusRequest bonusRequest = new BonusRequest();
@@ -107,19 +109,20 @@ public class Main {
         /**
          * Try and catch block for handling the exception thrown by the purchaseUsedEV method
          */
-        try{
+        try {
             ArrayList<CarDealership> car = new ArrayList<CarDealership>();
             car.add(new CarDealership("Hyundai", false, 0, 27000));
             UsedEV usedEV = new UsedEV("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 8, 27000);
             usedEV.purchaseUsedEV(car);
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             System.out.println("\n" + e.getMessage());
         }
 
         /**
-         * Print the car's new price after receiving the discount
+         * Purchase car with discounted price
          */
-        DiscountedPrice dp = new DiscountedPrice();
-        System.out.println("\nCar's price after applying the discount is: " + dp.getDiscountedPrice(vehicle));
+        System.out.println("\n");
+        System.out.println("Customer purchases car with discounted price: ");
+        System.out.println(cd.getDiscountedPrice(vehicle));
     }
 }

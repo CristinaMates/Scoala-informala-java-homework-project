@@ -12,6 +12,8 @@ public class CarDealership {
     private int stock;
     private int price;
     private ArrayList<ElectricVehicle> electricVehicles;
+    private GreenBonusProgram gbprogram;
+    ElectricVehicle[] ev = new ElectricVehicle[9];
 
     public CarDealership(String manufacturer, boolean newCar, int stock, int price) {
         this.manufacturer = manufacturer;
@@ -60,10 +62,74 @@ public class CarDealership {
         this.electricVehicles = electricVehicles;
     }
 
+    /**
+     * Created method in order to filter the array based on the fast-charging criteria
+     *
+     * @param elv
+     * @return
+     */
 
-    public void requestBonus(int price){
+    public ElectricVehicle[] filterFastCharging(ElectricVehicle[] elv) {
+        for (int i = 0; i < elv.length; i++) {
+            if (elv[i].isFastCharging() == true) {
+                System.out.println("Fast-charging cars: " + elv[i]);
+            }
+        }
+        return elv;
+    }
+
+    /**
+     * Created method in order to filter the array based on the stock criteria
+     *
+     * @param elecv
+     * @return
+     */
+
+    public ElectricVehicle[] filterStock(ElectricVehicle[] elecv) {
+        for (int i = 0; i < elecv.length; i++) {
+            if (elecv[i].getStock() > 0) {
+                System.out.println("Cars in stock: " + elecv[i]);
+            }
+        }
+        return elecv;
+    }
+
+    public int getFullPrice(ArrayList<ElectricVehicle> vehicle) {
+        int fullPrice = 0;
+        for (int a = 0; a <= vehicle.size() - 1; a++) {
+            fullPrice = vehicle.get(a).getPrice();
+        }
+        return fullPrice;
+    }
+
+    /**
+     * Method for calculating the price after using the discount
+     *
+     * @param e
+     * @return
+     */
+
+    public int getDiscountedPrice(ArrayList<ElectricVehicle> e) {
+        GreenBonusProgram gbp = new GreenBonusProgram();
+        int newPrice = 0;
+        for (ElectricVehicle elevehicle : e) {
+            newPrice = elevehicle.getPrice() - gbp.getFixedBudget();
+        }
+        return newPrice;
+    }
+
+    @Override
+    public String toString() {
+        return "CarDealership{" +
+                ", stock=" + stock +
+                ", price=" + price +
+                '}';
+    }
+
+    public void requestBonus(int price) {
 
         this.price = price;
     }
 
 }
+
