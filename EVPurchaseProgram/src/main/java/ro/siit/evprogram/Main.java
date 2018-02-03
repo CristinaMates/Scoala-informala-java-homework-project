@@ -124,5 +124,14 @@ public class Main {
         System.out.println("\n");
         System.out.println("Customer purchases car with discounted price: ");
         System.out.println(cd.getDiscountedPrice(vehicle));
+
+        /**
+         *Sorting the array by using the Quick Sort algorithm
+         */
+        QuickSort<ElectricVehicle> qs = new QuickSort<ElectricVehicle>();
+        qs.array = ev;
+        System.out.println("\nSorted cars by using the quicksorting algorithm: ");
+        qs.sort();
+        qs.printArray();
     }
 }
