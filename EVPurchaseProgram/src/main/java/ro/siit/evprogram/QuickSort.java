@@ -1,15 +1,15 @@
 package ro.siit.evprogram;
 
 public class QuickSort<T extends Comparable<T>> {
-    public T[] array;
+    public T[] arr;
 
     /**
      * method for sorting an array
      */
     public void sort() {
         int left = 0;
-        int right = array.length - 1;
-        quicksort(0, array.length - 1);
+        int right = arr.length - 1;
+        quicksort(0, arr.length - 1);
     }
 
     /**
@@ -41,8 +41,8 @@ public class QuickSort<T extends Comparable<T>> {
         int l = left - 1;
         int r = right;
         while (l < r) {
-            while (((Comparable<T>) array[++l]).compareTo(pivot) < 0) ;
-            while (r > 0 && ((Comparable<T>) array[--r]).compareTo(pivot) > 0) ;
+            while (((Comparable<T>) arr[++l]).compareTo(pivot) < 0) ;
+            while (r > 0 && ((Comparable<T>) arr[--r]).compareTo(pivot) > 0) ;
             if (l >= r) {
                 break;
             } else {
@@ -55,14 +55,14 @@ public class QuickSort<T extends Comparable<T>> {
 
     public T getMedian(int left, int right) {
         int center = (left + right) / 2;
-        if (((Comparable<T>) array[left]).compareTo(array[center]) > 0)
+        if (((Comparable<T>) arr[left]).compareTo(arr[center]) > 0)
             swap(left, center);
-        if (((Comparable<T>) array[left]).compareTo(array[right]) > 0)
+        if (((Comparable<T>) arr[left]).compareTo(arr[right]) > 0)
             swap(left, right);
-        if (((Comparable<T>) array[center]).compareTo(array[right]) > 0)
+        if (((Comparable<T>) arr[center]).compareTo(arr[right]) > 0)
             swap(center, right);
         swap(center, right);
-        return array[right];
+        return arr[right];
     }
 
     /**
@@ -72,13 +72,13 @@ public class QuickSort<T extends Comparable<T>> {
      * @param right
      */
     private void swap(int left, int right) {
-        T temp = array[left];
-        array[left] = array[right];
-        array[right] = temp;
+        T temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
     }
 
     public void printArray() {
-        for (T t : array) {
+        for (T t : arr) {
             System.out.println(t + " ");
         }
     }
