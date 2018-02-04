@@ -12,10 +12,10 @@ public class QuickSortTest {
         electricV[1] = new ElectricVehicle("Volkswagen", "e-Golf", false, "dc", "vrla", "32 KWh", 2014, 150, 110, 5, 38000);
         electricV[2] = new ElectricVehicle("Renault", "Zoe", false, "ac", "li-ion", "35 KWh", 2016, 130, 140, 2, 33000);
 
-        QuickSort<ElectricVehicle> qsort = new QuickSort<ElectricVehicle>();
-        qsort.arr = electricV;
-        qsort.sort();
-        qsort.printArray();
+        QuickSort<ElectricVehicle> qs = new QuickSort<ElectricVehicle>();
+        qs.arr = electricV;
+        qs.sort();
+        qs.printArray();
         System.out.println("\n");
 
         ElectricVehicle [] expectedO = new ElectricVehicle[3];

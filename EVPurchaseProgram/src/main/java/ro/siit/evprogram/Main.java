@@ -128,10 +128,10 @@ public class Main {
         /**
          *Sorting the array by using the Quick Sort algorithm
          */
-        QuickSort<ElectricVehicle> qs = new QuickSort<ElectricVehicle>();
-        qs.arr = ev;
+        QuickSort<ElectricVehicle> qsort = new QuickSort<ElectricVehicle>();
+        qsort.arr = ev;
         System.out.println("\nSorted cars by using the quicksorting algorithm: ");
-        qs.sort();
-        qs.printArray();
+        qsort.sort();
+        qsort.printArray();
     }
 }
