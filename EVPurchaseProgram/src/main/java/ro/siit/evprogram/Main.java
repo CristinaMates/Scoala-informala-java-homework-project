@@ -1,11 +1,11 @@
 package ro.siit.evprogram;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Main {
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
 
         /**
          * Created an object ElectricVehicle array
@@ -133,5 +133,12 @@ public class Main {
         System.out.println("\nSorted cars by using the quicksorting algorithm: ");
         qsort.sort();
         qsort.printArray();
+
+        /**
+         * Store cars in CSV file
+         */
+        String fileName = "C:/Users/Cristina/Documents/Scoala-informala-java-homework-project/EVPurchaseProgram/electricvehicle.csv";
+        ElectricVehicleCSVWriter evwriter = new ElectricVehicleCSVWriter();
+        evwriter.writeEVCSV(fileName);
     }
 }
