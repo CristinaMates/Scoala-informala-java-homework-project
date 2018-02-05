@@ -140,5 +140,11 @@ public class Main {
         String fileName = "C:/Users/Cristina/Documents/Scoala-informala-java-homework-project/EVPurchaseProgram/electricvehicle.csv";
         ElectricVehicleCSVWriter evwriter = new ElectricVehicleCSVWriter();
         evwriter.writeEVCSV(fileName);
+
+        /**
+         * Read from the CSV file
+         */
+        ElectricVehicleCSVReader evreader = new ElectricVehicleCSVReader();
+        evreader.readEVCSV(fileName);
     }
 }
