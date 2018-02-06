@@ -19,7 +19,7 @@ public class ElectricVehicleCSVReader {
     public static final int PRICE = 10;
 
 
-    public void readEVCSV(String fileName) throws IOException, FileNotFoundException {
+    public void readEVCSV(String fileName) throws IOException {
         BufferedReader fReader = null;
 
         try {
