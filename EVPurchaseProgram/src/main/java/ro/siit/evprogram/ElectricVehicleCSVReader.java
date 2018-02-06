@@ -19,23 +19,23 @@ public class ElectricVehicleCSVReader {
     public static final int PRICE = 10;
 
 
-    public void readEVCSV(String fileName) throws IOException {
-        BufferedReader fileReader = null;
+    public void readEVCSV(String fileName) throws IOException, FileNotFoundException {
+        BufferedReader fReader = null;
 
         try {
-            fileReader = new BufferedReader(new FileReader(fileName));
+            fReader = new BufferedReader(new FileReader(fileName));
             ArrayList<ElectricVehicle> ecList = new ArrayList<ElectricVehicle>();
             String line = "";
 
             /**
              * Method for reading the CSV's file header and to skip it
              */
-            fileReader.readLine();
+            fReader.readLine();
 
             /**
              * Start reading from the second line of the file
              */
-            while ((line = fileReader.readLine()) != null) {
+            while ((line = fReader.readLine()) != null) {
                 String[] tokens = line.split(",");
                 if (tokens.length > 0) {
                     ElectricVehicle electricVehicles = new ElectricVehicle(
@@ -62,7 +62,7 @@ public class ElectricVehicleCSVReader {
             e.printStackTrace();
         } finally {
             try {
-                fileReader.close();
+                fReader.close();
             } catch (IOException e) {
                 System.out.println("Error while closing fileReader.");
                 e.printStackTrace();

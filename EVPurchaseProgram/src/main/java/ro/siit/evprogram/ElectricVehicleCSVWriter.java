@@ -23,39 +23,39 @@ public class ElectricVehicleCSVWriter {
         ecarList.add(new ElectricVehicle("Kia", "Soul", true, "dc", "NiCd", "40 KWh", 2015, 125, 90, 8, 34000));
         ecarList.add(new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 0, 27000));
 
-        FileWriter fileWriter = null;
+        FileWriter fWriter = null;
 
         try {
-            fileWriter = new FileWriter(fileName);
-            fileWriter.append(HEADER.toString());
-            fileWriter.append(NEW_LINE);
+            fWriter = new FileWriter(fileName);
+            fWriter.append(HEADER);
+            fWriter.append(NEW_LINE);
 
             /**
              * Write ElectricVehicle object list to the CSV file
              */
             for (ElectricVehicle eCars : ecarList) {
-                fileWriter.append(eCars.getManufacturer());
-                fileWriter.append(SEPARATOR);
-                fileWriter.append(eCars.getModel());
-                fileWriter.append(SEPARATOR);
-                fileWriter.append(String.valueOf(eCars.isFastCharging()));
-                fileWriter.append(SEPARATOR);
-                fileWriter.append(eCars.getElectricMotor());
-                fileWriter.append(SEPARATOR);
-                fileWriter.append(eCars.getElectricBattery());
-                fileWriter.append(SEPARATOR);
-                fileWriter.append(eCars.getEnergyConsumption());
-                fileWriter.append(SEPARATOR);
-                fileWriter.append(String.valueOf(eCars.getProductionYear()));
-                fileWriter.append(SEPARATOR);
-                fileWriter.append(String.valueOf(eCars.getRangePerCharge()));
-                fileWriter.append(SEPARATOR);
-                fileWriter.append(String.valueOf(eCars.getHorsePower()));
-                fileWriter.append(SEPARATOR);
-                fileWriter.append(String.valueOf(eCars.getStock()));
-                fileWriter.append(SEPARATOR);
-                fileWriter.append(String.valueOf(eCars.getPrice()));
-                fileWriter.append(NEW_LINE);
+                fWriter.append(eCars.getManufacturer());
+                fWriter.append(SEPARATOR);
+                fWriter.append(eCars.getModel());
+                fWriter.append(SEPARATOR);
+                fWriter.append(String.valueOf(eCars.isFastCharging()));
+                fWriter.append(SEPARATOR);
+                fWriter.append(eCars.getElectricMotor());
+                fWriter.append(SEPARATOR);
+                fWriter.append(eCars.getElectricBattery());
+                fWriter.append(SEPARATOR);
+                fWriter.append(eCars.getEnergyConsumption());
+                fWriter.append(SEPARATOR);
+                fWriter.append(String.valueOf(eCars.getProductionYear()));
+                fWriter.append(SEPARATOR);
+                fWriter.append(String.valueOf(eCars.getRangePerCharge()));
+                fWriter.append(SEPARATOR);
+                fWriter.append(String.valueOf(eCars.getHorsePower()));
+                fWriter.append(SEPARATOR);
+                fWriter.append(String.valueOf(eCars.getStock()));
+                fWriter.append(SEPARATOR);
+                fWriter.append(String.valueOf(eCars.getPrice()));
+                fWriter.append(NEW_LINE);
             }
             System.out.println("\nCreated CSV file.");
         } catch (Exception e) {
@@ -63,8 +63,8 @@ public class ElectricVehicleCSVWriter {
             e.printStackTrace();
         } finally {
             try {
-                fileWriter.flush();
-                fileWriter.close();
+                fWriter.flush();
+                fWriter.close();
             } catch (IOException e) {
                 System.out.println("Error while flushing/closing fileWriter.");
                 e.printStackTrace();

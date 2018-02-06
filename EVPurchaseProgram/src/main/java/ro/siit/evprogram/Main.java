@@ -137,14 +137,14 @@ public class Main {
         /**
          * Store cars in CSV file
          */
-        String fileName = "C:/Users/Cristina/Documents/Scoala-informala-java-homework-project/EVPurchaseProgram/electricvehicle.csv";
+        String file = "C:/Users/Cristina/Documents/Scoala-informala-java-homework-project/EVPurchaseProgram/electricvehicle.csv";
         ElectricVehicleCSVWriter evwriter = new ElectricVehicleCSVWriter();
-        evwriter.writeEVCSV(fileName);
+        evwriter.writeEVCSV(file);
 
         /**
          * Read from the CSV file
          */
         ElectricVehicleCSVReader evreader = new ElectricVehicleCSVReader();
-        evreader.readEVCSV(fileName);
+        evreader.readEVCSV(file);
     }
 }
