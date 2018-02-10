@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
         /**
          * Created an object ElectricVehicle array
@@ -146,5 +146,20 @@ public class Main {
          */
         ElectricVehicleCSVReader evreader = new ElectricVehicleCSVReader();
         evreader.readEVCSV(file);
+
+
+        CarDealership carDealership = new CarDealership("Hyundai", false, 3, 27000);
+        GreenBonusProgram greenBonus = new GreenBonusProgram();
+        Thread t1 = new Thread(carDealership);
+        Thread t2 = new Thread(greenBonus);
+        t1.start();
+        t2.start();
+
+        try {
+            t1.join();
+            t2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

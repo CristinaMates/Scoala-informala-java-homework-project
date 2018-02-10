@@ -1,12 +1,13 @@
 package ro.siit.evprogram;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * @author Cristina Mates
  */
 
-public class CarDealership {
+public class CarDealership implements Runnable {
     private String manufacturer;
     private boolean newCar = true;
     private int stock;
@@ -117,7 +118,7 @@ public class CarDealership {
                 newPrice = elevehicle.getPrice() - gbp.getFixedBudget();
             }
         }
-            return newPrice;
+        return newPrice;
     }
 
     /**
@@ -139,10 +140,43 @@ public class CarDealership {
                 '}';
     }
 
-    public void requestBonus(int price) {
-
-        this.price = price;
+    public void requestBonus(ArrayList<ElectricVehicle> eVehicles) {
+        int request = 0;
+        for (int i = 0; i < eVehicles.size(); i++) {
+            if (eVehicles.get(i).getStock() > 0) {
+                request += 1;
+            }
+        }
+        System.out.println("Request bonus from Green Bonus Program" + request);
     }
 
+    public void run() {
+
+        ElectricVehicle[] evRequest = new ElectricVehicle[9];
+        evRequest[0] = new ElectricVehicle("Volkswagen", "e-UP", true, "bldc", "Nicd", "30 KWh", 2012, 100, 140, 10, 25000);
+        evRequest[1] = new ElectricVehicle("Volkswagen", "e-Golf", false, "dc", "vrla", "32 KWh", 2014, 150, 110, 18, 38000);
+        evRequest[2] = new ElectricVehicle("Renault", "Zoe", false, "ac", "li-ion", "35 KWh", 2016, 130, 140, 5, 33000);
+        evRequest[3] = new ElectricVehicle("BMW", "i3", true, "bldc", "vrla", "37 KWh", 2016, 160, 155, 9, 40000);
+        evRequest[4] = new ElectricVehicle("Smart", "FourTwo", true, "bldc", "vrla", "28 KWh", 2013, 110, 130, 21, 22000);
+        evRequest[5] = new ElectricVehicle("Smart", "FourFour", true, "ac", "NiCd", "30 KWh", 2017, 90, 115, 0, 22700);
+        evRequest[6] = new ElectricVehicle("Smart", "FourTwo Cabrio", false, "bldc", "li-ion", "42 KWh", 2016, 180, 120, 25, 23000);
+        evRequest[7] = new ElectricVehicle("Kia", "Soul", true, "dc", "NiCd", "40 KWh", 2015, 125, 90, 12, 34000);
+        evRequest[8] = new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 0, 27000);
+
+        Random rand = new Random();
+        int numberOfRequest = 0;
+        for (int y = 0; y <= evRequest.length - 1; y++) {
+            while (evRequest[y].getStock() > 0) {
+                numberOfRequest += 1;
+                evRequest[y].setStock(evRequest[y].getStock() - 1);
+                System.out.println(Thread.currentThread().getName() + "Number of request: " + numberOfRequest);
+            }
+        }
+        try {
+            Thread.sleep(rand.nextInt(100));
+        } catch (InterruptedException e) {
+        }
+    }
 }
+
 
