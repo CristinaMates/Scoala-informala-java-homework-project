@@ -1,11 +1,18 @@
 package ro.siit.evprogram;
 
-import java.util.Random;
-
 public class GreenBonusProgram implements Runnable {
     private int fixedBudget = 10000;
     private String[] HistoryOfPurchases;
     private int totalSum = 1000000;
+    private Request request;
+
+    public GreenBonusProgram(Request req) {
+        request = req;
+    }
+
+    public GreenBonusProgram() {
+
+    }
 
     public int getFixedBudget() {
         return fixedBudget;
@@ -31,6 +38,14 @@ public class GreenBonusProgram implements Runnable {
         HistoryOfPurchases = historyOfPurchases;
     }
 
+    public Request getRequest() {
+        return request;
+    }
+
+    public void setRequest(Request request) {
+        this.request = request;
+    }
+
     /**
      * Method for throwing an exception if the Green Bonus Program's budget is less than 10000.
      */
@@ -43,17 +58,11 @@ public class GreenBonusProgram implements Runnable {
     }
 
     public void run() {
-        Random random = new Random();
-        CarDealership c = new CarDealership("BMW", true, 5, 40000);
-        int handleRequest = 0;
-        while (totalSum >= 10000) {
-            handleRequest += 1;
-            totalSum = totalSum - 10000;
-            System.out.println(Thread.currentThread().getName() + ": Handled request: " + handleRequest);
-            try {
-                Thread.sleep(random.nextInt(100));
-            } catch (InterruptedException e) {
-            }
+
+        int numberOfRequests = totalSum / fixedBudget;
+        for (int i = 1; i <= numberOfRequests; i++) {
+            int value = request.receive();
+            System.out.println(Thread.currentThread().getName() + ": Receive request:" + value);
         }
     }
 }

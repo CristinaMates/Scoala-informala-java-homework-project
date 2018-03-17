@@ -147,9 +147,12 @@ public class Main {
         ElectricVehicleCSVReader evreader = new ElectricVehicleCSVReader();
         evreader.readEVCSV(file);
 
-
-        CarDealership carDealership = new CarDealership("Hyundai", false, 3, 27000);
-        GreenBonusProgram greenBonus = new GreenBonusProgram();
+        /**
+         * Green Bonus Program is able to handle multiple dealership requests concurrently
+         */
+        Request request = new Request();
+        CarDealership carDealership = new CarDealership(request);
+        GreenBonusProgram greenBonus = new GreenBonusProgram(request);
         Thread t1 = new Thread(carDealership);
         Thread t2 = new Thread(greenBonus);
         t1.start();
