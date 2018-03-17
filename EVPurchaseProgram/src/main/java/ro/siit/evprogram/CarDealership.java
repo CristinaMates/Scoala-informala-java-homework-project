@@ -14,13 +14,18 @@ public class CarDealership implements Runnable {
     private int price;
     private ArrayList<ElectricVehicle> electricVehicles;
     private GreenBonusProgram gbprogram;
-    ElectricVehicle[] ev = new ElectricVehicle[9];
+    private ElectricVehicle[] ev = new ElectricVehicle[9];
+    private Request request;
 
     public CarDealership(String manufacturer, boolean newCar, int stock, int price) {
         this.manufacturer = manufacturer;
         this.newCar = newCar;
         this.stock = stock;
         this.price = price;
+    }
+
+    public CarDealership(Request req) {
+        request = req;
     }
 
     public boolean isNewCar() {
@@ -61,6 +66,30 @@ public class CarDealership implements Runnable {
 
     public void setElectricVehicles(ArrayList<ElectricVehicle> electricVehicles) {
         this.electricVehicles = electricVehicles;
+    }
+
+    public GreenBonusProgram getGbprogram() {
+        return gbprogram;
+    }
+
+    public void setGbprogram(GreenBonusProgram gbprogram) {
+        this.gbprogram = gbprogram;
+    }
+
+    public ElectricVehicle[] getEv() {
+        return ev;
+    }
+
+    public void setEv(ElectricVehicle[] ev) {
+        this.ev = ev;
+    }
+
+    public Request getRequest() {
+        return request;
+    }
+
+    public void setRequest(Request request) {
+        this.request = request;
     }
 
     /**
@@ -164,13 +193,13 @@ public class CarDealership implements Runnable {
         evRequest[8] = new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 0, 27000);
 
         Random rand = new Random();
-        int numberOfRequest = 0;
-        for (int y = 0; y <= evRequest.length - 1; y++) {
-            while (evRequest[y].getStock() > 0) {
-                numberOfRequest += 1;
-                evRequest[y].setStock(evRequest[y].getStock() - 1);
-                System.out.println(Thread.currentThread().getName() + "Number of request: " + numberOfRequest);
-            }
+
+        int totalStock = evRequest[0].getStock() + evRequest[1].getStock() + evRequest[2].getStock() + evRequest[3].getStock()
+                + evRequest[4].getStock() + evRequest[5].getStock() + evRequest[6].getStock() + evRequest[7].getStock()
+                + evRequest[8].getStock();
+        for (int y = 1; y <= totalStock; y++) {
+            request.send(y);
+            System.out.println(Thread.currentThread().getName() + ": Send request: " + y);
         }
         try {
             Thread.sleep(rand.nextInt(100));
