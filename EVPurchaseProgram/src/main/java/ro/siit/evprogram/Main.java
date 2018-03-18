@@ -61,9 +61,9 @@ public class Main {
          * Try and catch block for handling the exception thrown by the carsStock method
          */
         try {
-            CarDealership cStock = new CarDealership("Hyundai", true, 3, 27000);
+            CarDealership cStock = new CarDealership();
             ArrayList<ElectricVehicle> ele = new ArrayList<ElectricVehicle>();
-            ele.add(new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 0, 27000));
+            ele.add(new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 3, 27000));
             cStock.carsStock(ele);
         } catch (IllegalArgumentException e) {
             System.out.println("\n" + e.getMessage());
@@ -86,7 +86,7 @@ public class Main {
          */
         ArrayList<ElectricVehicle> vehicle = new ArrayList<ElectricVehicle>();
         vehicle.add(new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 8, 27000));
-        CarDealership cd = new CarDealership("Hyundai", true, 3, 27000);
+        CarDealership cd = new CarDealership();
         System.out.println("\nCustomer purchases car at full price: " + cd.getFullPrice(vehicle));
 
         /**
@@ -100,20 +100,13 @@ public class Main {
         }
 
         /**
-         * Print message for receiving bonus offer or notification that there are no more bonuses
-         */
-        BonusController bc = new BonusController();
-        System.out.println("\n");
-        System.out.println(bc.bonusController());
-
-        /**
          * Try and catch block for handling the exception thrown by the purchaseUsedEV method
          */
         try {
             ArrayList<CarDealership> car = new ArrayList<CarDealership>();
-            car.add(new CarDealership("Hyundai", false, 0, 27000));
-            UsedEV usedEV = new UsedEV("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 8, 27000);
-            usedEV.purchaseUsedEV(car);
+            car.add(new CarDealership("Hyundai", false, 3, 27000));
+            CarDealership carDealership = new CarDealership();
+            carDealership.purchaseUsedEV(car);
         } catch (IllegalArgumentException e) {
             System.out.println("\n" + e.getMessage());
         }
