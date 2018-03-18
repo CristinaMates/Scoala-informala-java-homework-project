@@ -1,0 +1,10 @@
+manufacturer,model,fastCharging,electricMotor,electricBattery,energyConsumption,productionYear,rangePerCharge,horsePower,stock,price
+Volkswagen,e-UP,true,bldc,Nicd,30 KWh,2012,100,140,3,25000
+Volkswagen,e-Golf,false,dc,vrla,32 KWh,2014,150,110,5,38000
+Renault,Zoe,false,ac,li-ion,35 KWh,2016,130,140,2,33000
+BMW,i3,true,bldc,vrla,37 KWh,2016,160,155,1,40000
+Smart,FourTwo,true,bldc,vrla,28 KWh,2013,110,130,6,22000
+Smart,FourFour,true,ac,NiCd,30 KWh,2017,90,115,0,22700
+Smart,FourTwo Cabrio,false,bldc,li-ion,42 KWh,2016,180,120,10,23000
+Kia,Soul,true,dc,NiCd,40 KWh,2015,125,90,8,34000
+Hyundai,Ioniq,true,dc,vrla,34 KWh,2011,145,100,0,27000
