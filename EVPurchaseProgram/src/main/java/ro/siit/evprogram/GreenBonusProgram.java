@@ -1,9 +1,18 @@
 package ro.siit.evprogram;
 
-public class GreenBonusProgram {
+public class GreenBonusProgram implements Runnable {
     private int fixedBudget = 10000;
-    private String[] historyOfPurchases;
-    private int totalSum = 10000000;
+    private String[] HistoryOfPurchases;
+    private int totalSum = 1000000;
+    private Request request;
+
+    public GreenBonusProgram(Request req) {
+        request = req;
+    }
+
+    public GreenBonusProgram() {
+
+    }
 
     public int getFixedBudget() {
         return fixedBudget;
@@ -19,5 +28,46 @@ public class GreenBonusProgram {
 
     public void setTotalSum(int totalSum) {
         this.totalSum = totalSum;
+    }
+
+    public String[] getHistoryOfPurchases() {
+        return HistoryOfPurchases;
+    }
+
+    public void setHistoryOfPurchases(String[] historyOfPurchases) {
+        HistoryOfPurchases = historyOfPurchases;
+    }
+
+    public Request getRequest() {
+        return request;
+    }
+
+    public void setRequest(Request request) {
+        this.request = request;
+    }
+
+    /**
+     * Method for throwing an exception if the Green Bonus Program's budget is less than 10000.
+     */
+
+    public int handleBonusRequest() throws IllegalArgumentException {
+        CarDealership carDealership = new CarDealership();
+        if (totalSum >= 10000) {
+            System.out.println("\nCustomer receives bonus of: " + fixedBudget);
+        } else {
+            if (totalSum < 10000) {
+                throw new IllegalArgumentException("There are no more bonuses.");
+            }
+        }
+            return fixedBudget;
+    }
+
+    public void run() {
+
+        int numberOfRequests = totalSum / fixedBudget;
+        for (int i = 1; i <= numberOfRequests; i++) {
+            int value = request.receive();
+            System.out.println(Thread.currentThread().getName() + ": Receive request:" + value);
+        }
     }
 }
