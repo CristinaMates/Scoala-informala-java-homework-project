@@ -12,7 +12,6 @@ public class Main {
          */
 
         ElectricVehicle[] ev = new ElectricVehicle[9];
-
         ev[0] = new ElectricVehicle("Volkswagen", "e-UP", true, "bldc", "Nicd", "30 KWh", 2012, 100, 140, 3, 25000);
         ev[1] = new ElectricVehicle("Volkswagen", "e-Golf", false, "dc", "vrla", "32 KWh", 2014, 150, 110, 5, 38000);
         ev[2] = new ElectricVehicle("Renault", "Zoe", false, "ac", "li-ion", "35 KWh", 2016, 130, 140, 2, 33000);
@@ -23,12 +22,11 @@ public class Main {
         ev[7] = new ElectricVehicle("Kia", "Soul", true, "dc", "NiCd", "40 KWh", 2015, 125, 90, 8, 34000);
         ev[8] = new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 0, 27000);
 
-
         /**
          * Filter cars by fast-charging and by stock
          */
 
-        CarDealership filterc = new CarDealership("new", 3, 25000);
+        CarDealership filterc = new CarDealership("Hyundai", true, 3, 27000);
         filterc.filterFastCharging(ev);
         System.out.println("\n");
         filterc.filterStock(ev);
@@ -59,25 +57,63 @@ public class Main {
             System.out.println(evl);
         }
 
+        /**
+         * Try and catch block for handling the exception thrown by the carsStock method
+         */
+        try {
+            CarDealership cStock = new CarDealership();
+            ArrayList<ElectricVehicle> ele = new ArrayList<ElectricVehicle>();
+            ele.add(new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 3, 27000));
+            cStock.carsStock(ele);
+        } catch (IllegalArgumentException e) {
+            System.out.println("\n" + e.getMessage());
+        }
+
+        /**
+         * Try and catch block for handling the exception thrown by the customerBudget method
+         */
+        try {
+            CustomerBudget customer = new CustomerBudget();
+            ArrayList<ElectricVehicle> el = new ArrayList<ElectricVehicle>();
+            el.add(new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 0, 27000));
+            customer.customerBudget(el);
+        } catch (IllegalArgumentException e) {
+            System.out.println("\n" + e.getMessage());
+        }
 
         /**
          * Purchase car at full price
          */
-
         ArrayList<ElectricVehicle> vehicle = new ArrayList<ElectricVehicle>();
         vehicle.add(new ElectricVehicle("Hyundai", "Ioniq", true, "dc", "vrla", "34 KWh", 2011, 145, 100, 8, 27000));
-        CarDealership cd = new CarDealership("new", 8, 27000);
+        CarDealership cd = new CarDealership();
         System.out.println("\nCustomer purchases car at full price: " + cd.getFullPrice(vehicle));
 
+        /**
+         * Try and catch block for handling the exception thrown by the handleBonusRequest method
+         */
+        try {
+            GreenBonusProgram bonusRequest = new GreenBonusProgram();
+            bonusRequest.handleBonusRequest();
+        } catch (IllegalArgumentException e) {
+            System.out.println("\n" + e.getMessage());
+        }
 
-        BonusController bc = new BonusController();
-        System.out.println("\n");
-        System.out.println(bc.bonusController());
+        /**
+         * Try and catch block for handling the exception thrown by the purchaseUsedEV method
+         */
+        try {
+            ArrayList<CarDealership> car = new ArrayList<CarDealership>();
+            car.add(new CarDealership("Hyundai", false, 3, 27000));
+            CarDealership carDealership = new CarDealership();
+            carDealership.purchaseUsedEV(car);
+        } catch (IllegalArgumentException e) {
+            System.out.println("\n" + e.getMessage());
+        }
 
         /**
          * Purchase car with discounted price
          */
-
         System.out.println("\n");
         System.out.println("Customer purchases car with discounted price: ");
         System.out.println(cd.getDiscountedPrice(vehicle));

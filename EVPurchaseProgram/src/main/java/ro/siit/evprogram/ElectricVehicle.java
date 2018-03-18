@@ -162,7 +162,7 @@ public class ElectricVehicle {
         result = 31 * result + (manufacturer != null ? manufacturer.hashCode() : 0);
         result = 31 * result + (model != null ? model.hashCode() : 0);
         result = 31 * result + productionYear;
-        result = 31 * result + stock;
+        result = 31 * result + (stock);
         result = 31 * result + (fastCharging ? 1 : 0);
         result = 31 * result + rangePerCharge;
         result = 31 * result + horsePower;
