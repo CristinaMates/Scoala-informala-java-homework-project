@@ -34,9 +34,14 @@ public class GreenBonusProgram {
      */
 
     public int handleBonusRequest() throws IllegalArgumentException {
-        if (getTotalSum() < 10000) {
-            throw new IllegalArgumentException("The Green Bonus Program budget should be more than 10000.");
+        CarDealership carDealership = new CarDealership();
+        if (totalSum >= 10000) {
+            System.out.println("\nCustomer receives bonus of: " + fixedBudget);
+        } else {
+            if (totalSum < 10000) {
+                throw new IllegalArgumentException("There are no more bonuses.");
+            }
         }
-        return getFixedBudget();
+            return fixedBudget;
     }
 }
