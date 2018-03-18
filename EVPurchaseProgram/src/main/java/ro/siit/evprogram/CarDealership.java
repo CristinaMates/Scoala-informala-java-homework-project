@@ -7,25 +7,30 @@ import java.util.ArrayList;
  */
 
 public class CarDealership {
-    private String type;
+    private String manufacturer;
+    private boolean newCar = true;
     private int stock;
     private int price;
+    private ArrayList<ElectricVehicle> electricVehicles;
     private GreenBonusProgram gbprogram;
-    ElectricVehicle[] ev = new ElectricVehicle[9];
+    private ElectricVehicle[] ev = new ElectricVehicle[9];
 
+    public CarDealership() {
+    }
 
-    public CarDealership(String type, int stock, int price) {
-        this.type = type;
+    public CarDealership(String manufacturer, boolean newCar, int stock, int price) {
+        this.manufacturer = manufacturer;
+        this.newCar = newCar;
         this.stock = stock;
         this.price = price;
     }
 
-    public String getType() {
-        return type;
+    public boolean isNewCar() {
+        return newCar;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setNewCar(boolean newCar) {
+        this.newCar = newCar;
     }
 
     public int getStock() {
@@ -42,6 +47,22 @@ public class CarDealership {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public ArrayList<ElectricVehicle> getElectricVehicles() {
+        return electricVehicles;
+    }
+
+    public void setElectricVehicles(ArrayList<ElectricVehicle> electricVehicles) {
+        this.electricVehicles = electricVehicles;
     }
 
     /**
@@ -95,15 +116,38 @@ public class CarDealership {
         GreenBonusProgram gbp = new GreenBonusProgram();
         int newPrice = 0;
         for (ElectricVehicle elevehicle : e) {
-            newPrice = elevehicle.getPrice() - gbp.getFixedBudget();
+            if (gbp.getTotalSum() > 10000) {
+                newPrice = elevehicle.getPrice() - gbp.getFixedBudget();
+            }
         }
         return newPrice;
+    }
+
+    /**
+     * Method for throwing an exception if the car is out of stock.
+     */
+    public void carsStock(ArrayList<ElectricVehicle> ele) throws IllegalArgumentException {
+        for (int i = 0; i < ele.size(); i++) {
+            if ((ele.get(i).getStock() <= 0)) {
+                throw new IllegalArgumentException("The car should be in stock in order to purchase it.");
+            }
+        }
+    }
+
+    /**
+     * Method for throwing an exception if the customer purchases an used car.
+     */
+    public void purchaseUsedEV(ArrayList<CarDealership> car) throws IllegalArgumentException {
+        for (int b = 0; b < car.size(); b++) {
+            if (car.get(b).isNewCar() == false) {
+                throw new IllegalArgumentException("Cannot purchase an used car with green bonus.");
+            }
+        }
     }
 
     @Override
     public String toString() {
         return "CarDealership{" +
-                "type='" + type + '\'' +
                 ", stock=" + stock +
                 ", price=" + price +
                 '}';
