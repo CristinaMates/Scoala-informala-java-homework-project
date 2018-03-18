@@ -1,6 +1,6 @@
 package ro.siit.evprogram;
 
-public class ElectricVehicle {
+public class ElectricVehicle implements Comparable<ElectricVehicle> {
     private String electricMotor;
     private String electricBattery;
     private String energyConsumption;
@@ -162,13 +162,14 @@ public class ElectricVehicle {
         result = 31 * result + (manufacturer != null ? manufacturer.hashCode() : 0);
         result = 31 * result + (model != null ? model.hashCode() : 0);
         result = 31 * result + productionYear;
-        result = 31 * result + stock;
+        result = 31 * result + (stock);
         result = 31 * result + (fastCharging ? 1 : 0);
         result = 31 * result + rangePerCharge;
         result = 31 * result + horsePower;
         result = 31 * result + price;
         return result;
     }
+
 
     @Override
     public String toString() {
@@ -187,4 +188,21 @@ public class ElectricVehicle {
                 '}';
 
     }
+
+    public int compareTo(ElectricVehicle o) {
+        Integer pr1 = getPrice();
+        Integer pr2 = o.getPrice();
+        Integer hp1 = getHorsePower();
+        Integer hp2 = o.getHorsePower();
+        Integer rpc1 = getRangePerCharge();
+        Integer rpc2 = o.getRangePerCharge();
+        if (pr1.compareTo(pr2) == 0) {
+            if (rpc1.compareTo(rpc2) == 0) {
+                return hp1.compareTo(hp2);
+            } else return rpc1.compareTo(rpc2);
+        }
+        return pr1.compareTo(pr2);
+    }
 }
+
+
