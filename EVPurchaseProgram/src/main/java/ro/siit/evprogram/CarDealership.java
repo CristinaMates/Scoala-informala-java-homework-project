@@ -17,6 +17,11 @@ public class CarDealership implements Runnable {
     private ElectricVehicle[] ev = new ElectricVehicle[9];
     private Request request;
 
+
+    public CarDealership() {
+    }
+
+
     public CarDealership(String manufacturer, boolean newCar, int stock, int price) {
         this.manufacturer = manufacturer;
         this.newCar = newCar;
@@ -157,6 +162,17 @@ public class CarDealership implements Runnable {
         for (int i = 0; i < ele.size(); i++) {
             if ((ele.get(i).getStock() <= 0)) {
                 throw new IllegalArgumentException("The car should be in stock in order to purchase it.");
+            }
+        }
+    }
+
+    /**
+     * Method for throwing an exception if the customer purchases an used car.
+     */
+    public void purchaseUsedEV(ArrayList<CarDealership> car) throws IllegalArgumentException {
+        for (int b = 0; b < car.size(); b++) {
+            if (car.get(b).isNewCar() == false) {
+                throw new IllegalArgumentException("Cannot purchase an used car with green bonus.");
             }
         }
     }
